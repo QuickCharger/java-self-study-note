@@ -1,3 +1,19 @@
+interface interfaceAB {
+    public String getInfo();
+}
+
+class A implements interfaceAB {
+    public String getInfo() {
+        return "this is a";
+    }
+}
+
+class B implements interfaceAB {
+    public String getInfo() {
+        return "this is b";
+    }
+}
+
 public class Hello {
     static final String F = "asdf";
 
@@ -51,6 +67,10 @@ public class Hello {
         }
 
         {
+            interfaceAB a = new A();
+            Object obj = a;
+            A x = (A)obj;
+            System.out.println(x.getInfo());
         }
     }
 }
