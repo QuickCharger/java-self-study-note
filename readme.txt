@@ -1,3 +1,3 @@
-ÔËĞĞ testCalendar ĞèÒªÔÚ¸ùÄ¿Â¼ÏÂÖ´ĞĞ
-  ÔÚ testCalendar ÎÄ¼ş¼ĞÏÂÖ´ĞĞ: javac Exercise.java Test15.java
-  ÔÚ¸ùÄ¿Â¼ÏÂÖ´ĞĞ: java testCalendar/Test15
+ï»¿è¿è¡Œ testCalendar éœ€è¦åœ¨æ ¹ç›®å½•ä¸‹æ‰§è¡Œ
+  åœ¨ testCalendar æ–‡ä»¶å¤¹ä¸‹æ‰§è¡Œ: javac Exercise.java Test15.java
+  åœ¨æ ¹ç›®å½•ä¸‹æ‰§è¡Œ: java testCalendar/Test15
