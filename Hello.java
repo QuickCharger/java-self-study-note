@@ -25,6 +25,57 @@ class ModB {
     }
 }
 
+// 接口强调特定功能的实现，而抽象类强调所属关系。
+
+// 抽象类
+abstract class absAnimal {
+    abstract void funcAbstractFunc();
+    public String IName;
+}
+
+// 接口类
+// 接口类允许继承多个其他接口
+interface interfaceAnimal {
+    String strInterfaceAnimal = "ani";      // 接口中的变量必须初始化！！！ 变量被隐士指定为public static final
+    void funcInterfaceAnimal();      // function 被隐士指定为public abstract
+}
+
+class Animal extends absAnimal implements interfaceAnimal{
+    public String name = "Animal name";
+    public static String staticName= "Animal Static name";
+    public void show() {
+        System.out.println(name);
+    }
+    public static void staticShow() {
+        System.out.println(staticName);
+    }
+    public void funcAbstractFunc() {
+    }
+    // 继承自接口的function必须为public！！！
+    public void funcInterfaceAnimal() {
+    }
+}
+
+class Cat extends Animal {
+    public String name = "Cat name";
+    public static String staticName = "Cat Static name";
+    public Cat(String name, String name2) {
+        super.name = name;
+        this.name = name2;
+    }
+
+    public void show() {
+        System.out.println(name);
+    }
+    public static void staticShow() {
+        System.out.println(staticName);
+    }
+
+    public String toString() {
+        return "this is " + super.name + ", name " + this.name;
+    }
+}
+
 public class Hello {
     Hello() {
         System.out.println("this is hello constructor");
@@ -51,6 +102,17 @@ public class Hello {
         System.out.println(Arrays.toString(Hello.numbers));
     }
 
+    public class InnerClass {
+        public int getSum(int x, int y) {
+            return x + y;
+        }
+    }
+
+    public static class InnerStaticClass {
+        public int getStaticSum(int x, int y) {
+            return x + y;
+        }
+    }
 
     public static void main(String[] args) {
         {
@@ -140,8 +202,38 @@ public class Hello {
             Hello h = new Hello();
         }
 
+        // 动态绑定
+        // 只有function能被动态绑定 成员不能被动态绑定。 function还必须是非static的才能正确被动态绑定
         {
-            System.out.println("asdf");
+            Cat cat = new Cat("animal", "cat");
+            System.out.println(cat);
+
+            Animal ani = cat;
+            System.out.println(ani.name);
+            System.out.println(ani.staticName);
+            ani.show();         // 只有此处动态绑定成功  其余的都不是动态绑定
+            ani.staticShow();
+        }
+
+        // 内部类
+        {
+            InnerClass h = new Hello().new InnerClass();
+            int c = h.getSum(1, 2);
+            System.out.println(c);
+
+            Hello.InnerStaticClass h2 = new Hello.InnerStaticClass();
+            int c2 = h2.getStaticSum(1, 2);
+            System.out.println(c2);
+
+            // 函数中的临时类
+            class tmpClass {
+                void say() {
+                    System.out.println("tmpClass.say");
+                }
+            }
+            
+            tmpClass tmp = new tmpClass();
+            tmp.say();
         }
     }
 }
