@@ -76,6 +76,10 @@ class Cat extends Animal {
     }
 }
 
+enum Color {
+    GREEN, YELLOW, RED
+}
+
 public class Hello {
     Hello() {
         System.out.println("this is hello constructor");
@@ -234,6 +238,11 @@ public class Hello {
             
             tmpClass tmp = new tmpClass();
             tmp.say();
+        }
+
+        {
+            Color c = Color.RED;
+            System.out.println(c);
         }
     }
 }
